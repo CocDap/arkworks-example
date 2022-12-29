@@ -1,0 +1,22 @@
+[package]
+name = "arkworks-example"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ark-bls12-381 = { version = "^0.3.0", features = [ "curve" ] }
+ark-relations = "^0.3.0"
+ark-r1cs-std = "^0.3.0" 
+ark-crypto-primitives = { version = "^0.3.0", features = [ "parallel", "r1cs" ] }
+ark-std = { version = "^0.3.0", features = [ "parallel" ] }
+ark-groth16 = { version = "^0.3.0", features = [ "parallel", "r1cs" ] }
+ark-ec = { version = "^0.3.0", default-features = false }
+ark-serialize = "^0.3.0"
+arkworks-native-gadgets = { version = "1.2.0", default-features = false }
+ark-ed-on-bls12-381 = { version = "^0.3.0", features = ["r1cs"] }
+
+hex = "0.3"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
