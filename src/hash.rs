@@ -1,6 +1,6 @@
 
 use ark_bls12_381::{Bls12_381, Fr};
-
+use ark_ed_on_bls12_381::EdwardsAffine;
 use ark_r1cs_std::prelude::*;
 use ark_r1cs_std::uint8::UInt8;
 use ark_relations::r1cs::{ConstraintSynthesizer, ConstraintSystemRef, SynthesisError, Field}; 
@@ -86,7 +86,7 @@ pub struct HashDemo {
 impl ConstraintSynthesizer<Fr> for HashDemo { 
     fn generate_constraints(self, cs: ConstraintSystemRef<Fr>) -> Result<(), SynthesisError> {
 
-        let image = EdwardsVar::new_input(ark_relations::ns!(cs, "image_var"), || Ok(&self.image))?;
+        let image = <EdwardsVar as AllocVar<EdwardsAffine, _>>::new_input(ark_relations::ns!(cs, "image_var"), || Ok(&self.image))?;
         // let two_to_one_crh_params =
         //     TwoToOneHashParamsVar::new_constant(cs.clone(), &self.params)?;
 
